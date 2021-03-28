@@ -1,20 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      To Do List
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item>
+    <ion-label>Titulo</ion-label>
+    <ion-input [(ngModel)]="newTask.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Descripción</ion-label>
+    <ion-input [(ngModel)]="newTask.desc"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addTask(newTask)">Agregar</ion-button>
+
+
+  <ul *ngFor="let t of listTask;let i = index">
+    <li>{{t.title}}</li><button (click)="deleteTask(t.id)"><ion-button color="primary">Eliminar</ion-button></button>
+    <button (click)="editTask(i,t)"><ion-button color="warning">Actualizar</ion-button></button>
+  </ul>
 </ion-content>
